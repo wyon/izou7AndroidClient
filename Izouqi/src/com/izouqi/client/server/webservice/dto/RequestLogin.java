@@ -2,7 +2,6 @@ package com.izouqi.client.server.webservice.dto;
 
 import com.izouqi.client.server.webservice.RequestParam;
 
-//µÇÂ¼²ÎÊý
 public class RequestLogin implements RequestParam {
 	private String username;
 	private String password;
