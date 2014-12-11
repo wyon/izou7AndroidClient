@@ -1,5 +1,12 @@
 package com.izouqi.client.toolkit;
 
-public class Utils {
+import com.izouqi.client.IzouqiApplication;
 
+public final class Utils {
+	private Utils() {
+	}
+	
+	public static IzouqiApplication getApp(){
+		return IzouqiApplication.getApplication();
+	}
 }
