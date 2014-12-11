@@ -13,9 +13,9 @@ public class ResponseUserInfo extends BaseDto {
 	private String email;
 	private String qq;
 	private String headPicture;
-	private String birthday;
+	private String birthday; // "2014-01-11"
 	private int city;
-	private boolean sex;
+	private boolean sex; // false(0)Ϊ�У�true(1)ΪŮ
 	private String introduction;
 	private String careerInfo;
 

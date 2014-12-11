@@ -26,7 +26,7 @@ public class IzouqiApplication extends Application {
 				try {
 					Thread.sleep(2000);
 
-				ServerImpl.getCurrentUser();
+					ServerImpl.getComingActivites();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

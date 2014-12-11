@@ -10,6 +10,7 @@ import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
 
 import com.izouqi.client.constant.Constant;
+import com.izouqi.client.server.webservice.dto.ActivityInfoInListDto;
 import com.izouqi.client.server.webservice.dto.BaseDto;
 import com.izouqi.client.server.webservice.dto.RequestChangePassword;
 import com.izouqi.client.server.webservice.dto.RequestLogin;
@@ -112,10 +113,21 @@ public class ServerImpl {
 
 	public static synchronized void getCurrentUser() {
 		String token = "6ee769ae1dd8f48215aeb1e5e239fb0dc5ae6bf3cef02c061c14843d2ba5e3a3";
-		ResponseData<Object> response = getInstance().serverAPI.getCurrentUser(token);
+		ResponseData<BaseDto> response = getInstance().serverAPI
+				.getCurrentUser(token);
 		Object o = response.getData();
-		
+
 		System.out.println(o);
+	}
+
+	public static synchronized void getComingActivites() {
+		String token = "c534fef8436b727c380fc6a7cca7cdda609cb36c90b0e57ad4eb14286438b626";
+		ResponseData<ActivityInfoInListDto[]> response = getInstance().serverAPI
+				.getComingActivites(token, 0);
+		
+		ActivityInfoInListDto[] als = response.getData();
+		
+		System.out.println(als);
 	}
 
 	public static synchronized void searchActivities() {
