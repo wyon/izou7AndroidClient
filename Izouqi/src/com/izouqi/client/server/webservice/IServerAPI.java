@@ -22,7 +22,7 @@ import com.izouqi.client.server.webservice.dto.ResponseUserInfo;
 public interface IServerAPI {
 
 	/**
-	 * ×¢²á
+	 * æ³¨å†Œ
 	 * 
 	 * @param rp
 	 *            register param {@link RequestRegister}
@@ -33,7 +33,7 @@ public interface IServerAPI {
 	ResponseData<BaseDto> register(@Body RequestParam rp);
 
 	/**
-	 * µÇÂ¼
+	 * ç™»å½•
 	 * 
 	 * @param rp
 	 *            login param {@link RequestLogin}
@@ -44,7 +44,7 @@ public interface IServerAPI {
 	ResponseData<ResponseLogin> login(@Body RequestParam rp);
 
 	/**
-	 * µÇ³ö
+	 * ç™»å‡º
 	 * 
 	 * @param token
 	 * @return BaseDto is null.
@@ -54,7 +54,7 @@ public interface IServerAPI {
 	ResponseData<BaseDto> logout(@Header("token") String token);
 
 	/**
-	 * ĞŞ¸ÄÃÜÂë
+	 * ä¿®æ”¹å¯†ç 
 	 * 
 	 * @param token
 	 * @param rp
@@ -69,7 +69,7 @@ public interface IServerAPI {
 			@Body RequestParam rp);
 
 	/**
-	 * »ñÈ¡µ±Ç°ÓÃ»§
+	 * è·å–å½“å‰ç”¨æˆ·
 	 * 
 	 * @param token
 	 * @return
@@ -79,7 +79,7 @@ public interface IServerAPI {
 	ResponseData<BaseDto> getCurrentUser(@Header("token") String token);
 
 	/**
-	 * ĞŞ¸ÄÓÃ»§ĞÅÏ¢
+	 * ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯
 	 * 
 	 * @param token
 	 * @param rp
@@ -91,7 +91,7 @@ public interface IServerAPI {
 			@Body Map<String, Object> rp);
 
 	/**
-	 * ²éÑ¯µ±Ç°ÓÃ»§ĞÅÏ¢
+	 * æŸ¥è¯¢å½“å‰ç”¨æˆ·ä¿¡æ¯
 	 * 
 	 * @param token
 	 * @return
@@ -101,11 +101,11 @@ public interface IServerAPI {
 	ResponseData<ResponseUserInfo> getUserInfo(@Header("token") String token);
 
 	/**
-	 * »ñÈ¡ÎÒµÄ¼´½«µ½À´µÄ»î¶¯
+	 * è·å–æˆ‘çš„å³å°†åˆ°æ¥çš„æ´»åŠ¨
 	 * 
 	 * @param token
 	 * @param page
-	 *            Ò³Âë£¬Ä¬ÈÏÎª0
+	 *            é¡µç ï¼Œé»˜è®¤ä¸º0
 	 * @return null or ActivityInfoInListDto[]
 	 */
 	@GET("/activity/myComingActivities")
@@ -114,7 +114,7 @@ public interface IServerAPI {
 			@Header("token") String token, @Query("page") int page);
 
 	/**
-	 * »ñÈ¡ÎÒ¸ĞĞËÈ¤µÄ»î¶¯
+	 * è·å–æˆ‘æ„Ÿå…´è¶£çš„æ´»åŠ¨
 	 * @param token
 	 * @param page
 	 * @return null or ActivityInfoInListDto[]
@@ -125,18 +125,18 @@ public interface IServerAPI {
 			@Query("page") int page);
 
 	/**
-	 * ËÑË÷»î¶¯
+	 * æœç´¢æ´»åŠ¨
 	 * 
-	 * Query ²ÎÊıÎªnull Ê±£¬getµÄurl²»»áÌí¼Ó¸Ã²ÎÊı
+	 * Query å‚æ•°ä¸ºnull æ—¶ï¼Œgetçš„urlä¸ä¼šæ·»åŠ è¯¥å‚æ•°
 	 * 
 	 * @param text
-	 *            ËÑË÷ÄÚÈİ£¬null±íÊ¾ËÑË÷È«²¿
+	 *            æœç´¢å†…å®¹ï¼Œnullè¡¨ç¤ºæœç´¢å…¨éƒ¨
 	 * @param cityId
-	 *            ËÑË÷³ÇÊĞid£¬ null ±íÊ¾ËÑË÷È«²¿
+	 *            æœç´¢åŸå¸‚idï¼Œ null è¡¨ç¤ºæœç´¢å…¨éƒ¨
 	 * @param searchDateMap
-	 *            ËÑË÷µÄÆğÊ¼Ê±¼äµã£¬ ¿Í»§¶ËÏŞÖÆÎª±ØĞë³É¶Ô³öÏÖ£¬²¢¿ªÊ¼Ê±¼ä<=½áÊøÊ±¼ä
+	 *            æœç´¢çš„èµ·å§‹æ—¶é—´ç‚¹ï¼Œ å®¢æˆ·ç«¯é™åˆ¶ä¸ºå¿…é¡»æˆå¯¹å‡ºç°ï¼Œå¹¶å¼€å§‹æ—¶é—´<=ç»“æŸæ—¶é—´
 	 * @param page
-	 *            Ò³Âë£¬Ä¬ÈÏÎª0
+	 *            é¡µç ï¼Œé»˜è®¤ä¸º0
 	 * @return null or ActivityInfoInListDto[]
 	 */
 	@GET("/activity/activities")

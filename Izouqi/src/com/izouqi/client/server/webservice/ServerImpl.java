@@ -22,10 +22,10 @@ public class ServerImpl {
 
 	private IServerAPI serverAPI;
 
-	// -alias cerzy : cerzy Îª bksÖĞ´æ´¢Ö¤ÊéµÄ±ğÃû
-	// -file certest.cer : Îª´Ó·şÎñÆ÷µ¼³öµÄÖ¤Êé
-	// -keystore cerzy.bks : ½«Ö¤Êé±£´æµ½cerzy.bksÖĞ£¬ÈôÎÄ¼ş²»´æÔÚÔòĞÂ½¨£¬´æÔÚÔòĞÂÔöÒ»Ìõ¼ÇÂ¼
-	// -storepass pwtest : bksµÄÃÜÂë
+	// -alias cerzy : cerzy ä¸º bksä¸­å­˜å‚¨è¯ä¹¦çš„åˆ«å
+	// -file certest.cer : ä¸ºä»æœåŠ¡å™¨å¯¼å‡ºçš„è¯ä¹¦
+	// -keystore cerzy.bks : å°†è¯ä¹¦ä¿å­˜åˆ°cerzy.bksä¸­ï¼Œè‹¥æ–‡ä»¶ä¸å­˜åœ¨åˆ™æ–°å»ºï¼Œå­˜åœ¨åˆ™æ–°å¢ä¸€æ¡è®°å½•
+	// -storepass pwtest : bksçš„å¯†ç 
 	// keytool -importcert -v -trustcacerts -alias cerzy -file certest.cer -ke
 	// ystore cerzy.bks -storetype BKS -providerclass
 	// org.bouncycastle.jce.provider.Bou
