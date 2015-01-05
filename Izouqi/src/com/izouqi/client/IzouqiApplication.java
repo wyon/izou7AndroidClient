@@ -1,15 +1,8 @@
 package com.izouqi.client;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.Reader;
-import java.io.StringWriter;
-
 import android.app.Application;
 
-import com.izouqi.client.common.android.CrashHandler;
-import com.izouqi.client.server.webservice.ServerImpl;
+import com.android.common.CrashHandler;
 
 public class IzouqiApplication extends Application {
 
@@ -30,19 +23,19 @@ public class IzouqiApplication extends Application {
 		// test();
 	}
 
-	private void test() {
-		new Thread() {
-			public void run() {
-				try {
-					Thread.sleep(2000);
-
-					ServerImpl.getComingActivites();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			};
-		}.start();
-	}
+//	private void test() {
+//		new Thread() {
+//			public void run() {
+//				try {
+//					Thread.sleep(2000);
+//
+//					ServerImpl.getComingActivites();
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			};
+//		}.start();
+//	}
 	
 	private void reportCrashLogs() {/*
 		new Thread("reportCrashLogs_thread") {
