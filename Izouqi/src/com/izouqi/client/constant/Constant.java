@@ -18,4 +18,6 @@ public class Constant {
 	
 	public static final String WEB_ROOT_DIR = "www";
 	public static final String WEB_ROOT_DIR_UPDATE = "www_new";
+	
+	public static final int DEF_WEB_VERSION = 1;
 }

@@ -8,7 +8,10 @@ import java.util.Map;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
+import android.content.Context;
+import android.content.pm.PackageInfo;
 
+import com.android.common.Tools;
 import com.izouqi.client.constant.Constant;
 import com.izouqi.client.server.webservice.dto.ActivityInfoInListDto;
 import com.izouqi.client.server.webservice.dto.BaseDto;
@@ -16,6 +19,8 @@ import com.izouqi.client.server.webservice.dto.RequestChangePassword;
 import com.izouqi.client.server.webservice.dto.RequestLogin;
 import com.izouqi.client.server.webservice.dto.RequestRegister;
 import com.izouqi.client.server.webservice.dto.ResponseLogin;
+import com.izouqi.client.server.webservice.dto.ResponseWebUpgrade;
+import com.izouqi.client.toolkit.Utils;
 
 public class ServerImpl {
 	private static ServerImpl instance;
@@ -124,9 +129,9 @@ public class ServerImpl {
 		String token = "c534fef8436b727c380fc6a7cca7cdda609cb36c90b0e57ad4eb14286438b626";
 		ResponseData<ActivityInfoInListDto[]> response = getInstance().serverAPI
 				.getComingActivites(token, 0);
-		
+
 		ActivityInfoInListDto[] als = response.getData();
-		
+
 		System.out.println(als);
 	}
 
@@ -142,4 +147,24 @@ public class ServerImpl {
 		// System.out.println(a);
 	}
 
+	public static synchronized ResponseWebUpgrade checkWebUpgrade() {
+		Context context = Utils.getApp();
+		if (Tools.isNetworkConnected(context)
+				&& !Tools.isMobileConnected(context)) {
+			try {
+				PackageInfo pi = context.getPackageManager().getPackageInfo(
+						context.getPackageName(), 0);
+
+				ResponseData<ResponseWebUpgrade> response = getInstance().serverAPI
+						.checkWebUpgrade("latest",
+								String.valueOf(pi.versionCode));
+				if (response != null) {
+					return response.getData();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 }

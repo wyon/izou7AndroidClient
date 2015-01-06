@@ -18,6 +18,7 @@ import com.izouqi.client.server.webservice.dto.RequestLogin;
 import com.izouqi.client.server.webservice.dto.RequestRegister;
 import com.izouqi.client.server.webservice.dto.ResponseLogin;
 import com.izouqi.client.server.webservice.dto.ResponseUserInfo;
+import com.izouqi.client.server.webservice.dto.ResponseWebUpgrade;
 
 public interface IServerAPI {
 
@@ -115,14 +116,15 @@ public interface IServerAPI {
 
 	/**
 	 * 获取我感兴趣的活动
+	 * 
 	 * @param token
 	 * @param page
 	 * @return null or ActivityInfoInListDto[]
 	 */
 	@GET("/activity/myInterestActivities")
 	@Headers("Content-Type:application/json;charset=utf-8")
-	ResponseData<ActivityInfoInListDto[]> getInterestActivities(@Header("token") String token,
-			@Query("page") int page);
+	ResponseData<ActivityInfoInListDto[]> getInterestActivities(
+			@Header("token") String token, @Query("page") int page);
 
 	/**
 	 * 搜索活动
@@ -145,4 +147,15 @@ public interface IServerAPI {
 			@Query("text") String text, @Query("city") Integer cityId,
 			@QueryMap Map<String, String> searchDateMap, @Query("page") int page);
 
+	/**
+	 * 检测html更新
+	 * @param version html version; latest 为最新
+	 * @param apkVersion  当前apk版本
+	 * @return
+	 */
+	@GET("/update/html")
+	@Headers("Content-Type:application/json;charset=utf-8")
+	ResponseData<ResponseWebUpgrade> checkWebUpgrade(
+			@Query("version") String version,
+			@Query("apk_version") String apkVersion);
 }

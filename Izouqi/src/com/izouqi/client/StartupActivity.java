@@ -11,6 +11,7 @@ import com.android.common.BackgroundExecutor;
 import com.android.common.FileUtils;
 import com.izouqi.client.constant.Constant;
 import com.izouqi.client.toolkit.ConfigPreference;
+import com.izouqi.client.toolkit.Utils;
 
 /**
  * welcome page 更新web页面，向服务器查询最新的
@@ -54,10 +55,10 @@ public class StartupActivity extends Activity {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					
+
 					runOnUiThread(new Runnable() {
 						public void run() {
-							startMainActivity();	
+							startMainActivity();
 						}
 					});
 				}
@@ -71,21 +72,22 @@ public class StartupActivity extends Activity {
 					@Override
 					public void run() {
 						FileUtils.deleteFileRecur(webRootFile);
-						
+
 						try {
 							FileUtils.copyDir(webUpdate, webRootFile);
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-						
-						File filetmp = new File(webUpdate.getParentFile(), webUpdate.getName() + "_tmp");
+
+						File filetmp = new File(webUpdate.getParentFile(),
+								webUpdate.getName() + "_tmp");
 						webUpdate.renameTo(filetmp);
 						FileUtils.deleteFileRecur(webUpdate);
 						FileUtils.deleteFileRecur(filetmp);
-						
+
 						runOnUiThread(new Runnable() {
 							public void run() {
-								startMainActivity();	
+								startMainActivity();
 							}
 						});
 					}
@@ -95,16 +97,17 @@ public class StartupActivity extends Activity {
 
 		if (run != null) {
 			BackgroundExecutor.execute(run);
-		}else{
+		} else {
 			startMainActivity();
 		}
 	}
-	
-	private void startMainActivity(){
+
+	private void startMainActivity() {
 		Intent intent = new Intent();
 		intent.setClass(this, MainActivity.class);
 		startActivity(intent);
 		finish();
+		checkUpgrade();
 	}
 
 	@Override
@@ -112,5 +115,20 @@ public class StartupActivity extends Activity {
 		ConfigPreference.setFirstStartup(false);
 		super.finish();
 	}
-	
+
+	// 检测升级
+	private void checkUpgrade() {
+		checkWebUpgrade();
+		checkAppUpgrade();
+	}
+
+	// 升级html
+	private void checkWebUpgrade() {
+		Utils.checkWebUpgrade();
+	}
+
+	private void checkAppUpgrade() {
+		Utils.checkAppUpgrade();
+	}
+
 }
