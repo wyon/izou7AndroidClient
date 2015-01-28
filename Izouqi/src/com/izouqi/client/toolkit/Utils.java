@@ -13,7 +13,7 @@ import com.android.common.BackgroundExecutor;
 import com.android.common.ZipUtils;
 import com.izouqi.client.IzouqiApplication;
 import com.izouqi.client.constant.Constant;
-import com.izouqi.client.server.webservice.ServerImpl;
+import com.izouqi.client.server.webservice.ServerAPI;
 import com.izouqi.client.server.webservice.dto.ResponseWebUpgrade;
 
 public final class Utils {
@@ -32,7 +32,7 @@ public final class Utils {
 
 			@Override
 			public void run() {
-				ResponseWebUpgrade response = ServerImpl.checkWebUpgrade();
+				ResponseWebUpgrade response = ServerAPI.checkWebUpgrade();
 				if (response != null
 						&& response.getVersion() > ConfigPreference
 								.getWebVersion()) {
