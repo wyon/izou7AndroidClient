@@ -1,11 +1,26 @@
-<!DOCTYPE HTML> 
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<title>PhoneGap</title>
-		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-	</head>
-	<body>
-		<h1>Hello World</h1>
-		<img alt="error" src="pic/test.png" />
-	</body>
+<head>
+<title>PhoneGap</title>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+<script>
+	
+	function say(successCallback, errorCallback) {
+		cordova.exec(successCallback, errorCallback, 'testService', 'sayHello', []);
+	}
+	
+	function sayHello(){  
+        var success = function(message) { alert(message); };  
+        var error = function(message) { alert("Oopsie! " + message); };       
+        say(success, error);  
+    }  
+</script>
+</head>
+<body>
+	<h1>Hello World</h1>
+	<img alt="error" src="pic/test.png" />
+
+	<button onclick="sayHello()">click</button>
+</body>
 </html>

@@ -1,6 +1,5 @@
 package com.izouqi.client.server.webservice.dto;
 
-//login response data
 public class ResponseWebUpgrade extends BaseDto {
 	/**
 	 * 

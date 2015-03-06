@@ -12,6 +12,8 @@ import retrofit.http.Path;
 import retrofit.http.Query;
 import retrofit.http.QueryMap;
 
+import com.izouqi.client.server.webservice.dto.LogBodyRequest;
+import com.izouqi.client.server.webservice.dto.ResponseAppUpgrade;
 import com.izouqi.client.server.webservice.dto.ResponseWebUpgrade;
 
 public interface IServerAPI {
@@ -31,16 +33,36 @@ public interface IServerAPI {
 			@Query("version") String version,
 			@Query("apk_version") String apkVersion);
 
+	/**
+	 * log
+	 * 
+	 * @param request
+	 *            {@link LogBodyRequest}
+	 * @return statusCode: 200 success
+	 */
+	@SuppressWarnings("rawtypes")
 	@POST("/log/logs")
 	@Headers("Content-Type:application/json;charset=utf-8")
-	String log(@Body String request);
-	
+	ResponseData log(@Body RequestParam request);
+
+	/**
+	 * 检测apk更新
+	 * 
+	 * @param version
+	 *            版本号，latest 为最新
+	 * @return
+	 */
+	@GET("/update/apk")
+	@Headers("Content-Type:application/json;charset=utf-8")
+	ResponseData<ResponseAppUpgrade> checkAppUpgrade(
+			@Query("version") String version);
+
 	/**
 	 * 注册
 	 * 
 	 * @param rp
-	 *            register param {@link RequestRegister}
-	 * @return statusCode: 200 success; BaseDto is null.
+	 *            register param
+	 * @return
 	 */
 	@POST("/user/user")
 	@Headers("Content-Type:application/json;charset=utf-8")
@@ -106,13 +128,13 @@ public interface IServerAPI {
 	 * 修改用户职业信息
 	 * 
 	 * @param token
-	 * @param request
+	 * @param careerInfo
 	 * @return
 	 */
 	@PUT("/user/userCareerInfo")
 	@Headers("Content-Type:application/json;charset=utf-8")
 	String modifyUserCareerInfo(@Header("token") String token,
-			@Body String request);
+			@Query("careerInfo") String careerInfo);
 
 	/**
 	 * 查询当前用户信息

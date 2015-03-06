@@ -149,6 +149,9 @@ Hello Cordova
     </feature>
     <!-- Deprecated plugins element. Remove in 3.0 -->
     <plugins>
+        <plugin
+            name="testService"
+            value="com.izouqi.client.business.TestPlugin" />
     </plugins>
 
 </widget>
